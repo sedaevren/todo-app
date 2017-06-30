@@ -73,10 +73,15 @@ export class TodoComponent implements OnInit {
   getTodoById(id: number) {//
     this.todoService.getTodoById(id);
   }
-  removeTodo(todo) {
-    this.todoService.deleteTodoById(todo);
-    // this.todoService.deleteItem(todo.id);
+  cancelTodo(todo) {
+    this.todoService.cancelTodoById(todo);
+    
   }
+
+  deleteItem(todo){
+     this.todoService.deleteItem(todo.id);
+  }
+
   get todos() {
     return this.todoService.getAllTodos();
   }

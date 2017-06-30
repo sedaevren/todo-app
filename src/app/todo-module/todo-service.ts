@@ -6,13 +6,13 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
+import * as moment from 'moment'
 
 @Injectable()
 export class TodoService {
 
   // Placeholder for last id so we can simulate
   // automatic incrementing of id's
- 
 
   // Placeholder for todo's
   todos: Todo[] = [];
@@ -56,20 +56,23 @@ export class TodoService {
   }
 
 
-  deleteTodoById(todo: Todo) {
-    this.deleteTodoWithPromise(todo.id).then(res => {
+  cancelTodoById(todo: Todo) {
+    todo.cancel = !todo.cancel;
+
+    this.updateTodoWithPromise(todo).then(res => {
       this.todos = this.todos
         .map(t => {
           if (t.id === todo.id) {
-            t.cancel = !t.cancel;
+            t.cancel = t.cancel;
           }
           return t;
         });
-    });
-    return;
+    }).catch(err => {
+      todo.cancel = !todo.cancel;
+    })
   }
-
-  deleteItem(id: number) { ////////////
+ //for delete cancel task
+  deleteItem(id: number) { 
     this.deleteTodoWithPromise(id).then(res => {
       this.todos = this.todos
         .filter(todo => todo.id !== id);
