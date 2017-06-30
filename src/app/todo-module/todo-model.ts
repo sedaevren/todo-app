@@ -23,8 +23,8 @@ export class Todo {
       description: this.title,
       complete: this.complete,
       cancel: this.cancel,
-      startDate: moment(this.startDate).format('YYYY-MM-DD'),//"2017-08-09",
-      dueDate: "2017-08-09",
+      startDate: moment(this.startDate).format('YYYY-MM-DD'),
+      dueDate: moment(this.dueDate).format('YYYY-MM-DD'),
 
     }
   }

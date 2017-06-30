@@ -19,10 +19,11 @@
     <table>
       <td width="33%" valign="top">
         <ng2-datepicker placeholder="YYYY-MM-DD" [(ngModel)]="newTodo.startDate"></ng2-datepicker>
+        <label style=color:yellowgreen>Set Start Date</label>
       </td>
       <td width="33%" valign="center">
         <ng2-datepicker placeholder="YYYY-MM-DD" [(ngModel)]="newTodo.dueDate"></ng2-datepicker>
-        <label style=color:yellowgreen>Set Date/Time</label>
+        <label style=color:yellowgreen>Set Due Date</label>
       </td>
       <td width="33%" valign="center">
         <button type="button" text-align=center class="btn btn-primary" [(ngModel)]="singleModel" (click)="addTodo()" style=color:gainsboro>Add Task</button>
@@ -34,7 +35,7 @@
       <li *ngFor="let todo of (todos | openTodoPipes)" [class.completedv2]="todo.complete" [class.canceled]="todo.cancel">
         <div class="view">
           <input class="toggle" type="checkbox" (click)="toggleTodoComplete(todo)" [checked]="todo.complete" />
-          <label><small style=color:blue>Task Name: </small>{{todo.title}} <small style=color:gray style=font-size:60%>start date: {{todo.startDate|toReadableDate}}</small><small style=color:gray style=font-size:50%>(due date: {{todo.dueDate|toReadableDate}})</small></label>
+          <label><small style=color:blue>Task Name: </small>{{todo.description}} <small style=color:gray style=font-size:60%> {{todo.startDate|toReadableDate}}</small><small style=color:gray style=font-size:60%> - {{todo.dueDate|toReadableDate}}</small></label>
           <button class="destroy" (click)="removeTodo(todo)"></button>
         </div>
       </li>
@@ -45,7 +46,7 @@
       <li *ngFor="let todo of openTodos" [class.completedv2]="todo.complete">
         <div class="view">
           <input class="toggle" type="checkbox" (click)="toggleTodoComplete(todo)" [checked]="todo.complete">
-          <label><small style=color:blue>Task Name: </small>{{todo.title}} <small style=color:gray style=font-size:60%>start date: {{todo.startDate|toReadableDate}}</small><small style=color:gray style=font-size:50%>(due date: {{todo.dueDate|toReadableDate}})</small></label>
+          <label><small style=color:blue>Task Name: </small>{{todo.description}} <small style=color:gray style=font-size:60%> {{todo.startDate|toReadableDate}}</small><small style=color:gray style=font-size:60%> - {{todo.dueDate|toReadableDate}}</small></label>
           <button class="destroy" (click)="removeTodo(todo)"></button>
         </div>
       </li>
@@ -56,7 +57,7 @@
       <li *ngFor="let todo of completedTodos" [class.completedv2]="todo.complete">
         <div class="view">
           <input class="toggle" type="checkbox" (click)="toggleTodoComplete(todo)" [checked]="todo.complete">
-          <label><small style=color:blue>Task Name: </small>{{todo.title}} <small style=color:gray style=font-size:60%>start date: {{todo.startDate|toReadableDate}}</small><small style=color:gray style=font-size:50%>(due date: {{todo.dueDate|toReadableDate}} )</small></label>
+           <label><small style=color:blue>Task Name: </small>{{todo.description}} <small style=color:gray style=font-size:60%> {{todo.startDate|toReadableDate}}</small><small style=color:gray style=font-size:60%> - {{todo.dueDate|toReadableDate}}</small></label>
         </div>
       </li>
     </ul>
@@ -65,7 +66,7 @@
     <ul class="todo-list">
       <li *ngFor="let todo of canceledTodos" [class.completedv2]="todo.complete" [class.canceled2]="todo.cancel">
         <div class="view">
-          <label><small style=color:blue>Task Name: </small>{{todo.title}} <small style=color:gray style=font-size:60%>start date: {{todo.startDate|toReadableDate}}</small><small style=color:gray style=font-size:50%>(due date: {{todo.dueDate|toReadableDate}})</small></label>
+          <label><small style=color:blue>Task Name: </small>{{todo.description}} <small style=color:gray style=font-size:60%>start date: {{todo.startDate|toReadableDate}}</small><small style=color:gray style=font-size:50%>(due date: {{todo.dueDate|toReadableDate}})</small></label>
           <button class="destroy" (click)="removeTodo(todo)"></button>
         </div>
       </li>
@@ -100,10 +101,7 @@
     <div class="toggle-panel" *ngIf="show" [hidden]="hidden" [style.visibility]="visibility">
       <ul>
         <li>
-          <td width="50%" valign="center">
-            <!--<div class="box" @showmsg="state">-->
-            <textarea class="rajabox" title="Şu an Sitede" style="vertical-align: middle;" alt>AHMET EMRE ERGUN</textarea>
-          </td>
+          
         </li>
       </ul>
     </div>

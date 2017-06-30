@@ -27,7 +27,7 @@ import { RouterModule, Routes } from '@angular/router';
       ])
     ])
   ]
-  
+
 })
 
 export class TodoComponent implements OnInit {
@@ -35,20 +35,20 @@ export class TodoComponent implements OnInit {
   selection = 'ALL';
   showHide: boolean = false;
   //state: string = 'show';
-  show=true;
-  hidden=false;
-  visibility='visible';
-  show1=true;
-  hidden1=false;
-  visibility1='visible';
+  show = true;
+  hidden = false;
+  visibility = 'visible';
+  show1 = true;
+  hidden1 = false;
+  visibility1 = 'visible';
 
   constructor(private todoService: TodoService) {
   }
-  toggleShow(){
-    this.show=!this.show;
+  toggleShow() {
+    this.show = !this.show;
   }
-  toggleShow1(){
-    this.show1=!this.show1;
+  toggleShow1() {
+    this.show1 = !this.show1;
   }
   /*toggleHidden(){
     this.show=!this.show;
@@ -56,15 +56,15 @@ export class TodoComponent implements OnInit {
   toggleVisible(){
     this.visibility==='visible'?'hidden':'visible';
   }*/
- /* togglestates() {
-    this.state = (this.state === 'show' ? 'hide' : 'show');
-  }*/
+  /* togglestates() {
+     this.state = (this.state === 'show' ? 'hide' : 'show');
+   }*/
   changeShowStatus(todo) {
     this.showHide = !this.showHide;
   }
   addTodo() {
     this.todoService.addTodo(this.newTodo);
-  
+
   }
 
   toggleTodoComplete(todo) {
